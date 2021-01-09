@@ -1,0 +1,10 @@
+Q.1 You have a pre-designed/ In place software
+ system. Now there is a requirement to include
+ a new subtype. Which does not have Eat 
+and Drink methods. How would you deal with 
+such requirements? Write a program where
+ the new subtypes would be flexible enough
+ to not override the supertype as they are.
+
+
+Ans:
