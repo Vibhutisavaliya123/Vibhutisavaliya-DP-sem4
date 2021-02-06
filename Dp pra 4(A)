@@ -1,0 +1,58 @@
+class Xor_encryption:
+
+	def __init__(self):
+		self.text = None
+
+	def encrypt(self, text):
+		input_str = text
+		key = input("Enter the key for encryption or decryption: ")
+		no_of_itr = len(input_str)
+		output_str = ""
+
+
+		for i in range(no_of_itr):
+		    current = input_str[i]
+		    current_key = key[i%len(key)]
+		    output_str += chr(ord(current) ^ ord(current_key))
+
+		self.text = output_str
+
+		return output_str
+
+
+class Target:
+
+	def __init__(self,text):
+		self.text = text
+
+	def plain_text(self):
+		return 'password'
+
+
+class Xor_decryption(Target):
+
+	def __init__(self,encrypter):
+		self.encrypter = encrypter
+		self.encrypted_text = encrypter.encrypt(self.plain_text())
+
+	def set_encrypted_text(self,xor_encryption_obj):
+		self.encrypted_text = xor_encryption_obj.text
+
+	def decrypt(self):
+		return self.encrypter.encrypt(self.encrypted_text)
+
+
+
+class Client:
+
+	def __init__(self, target_text):
+		self.target_text = target_text
+
+	def print_recieved_text(self):
+		return self.target_text.decrypt()
+
+
+xor = Xor_encryption()
+xor_decrypt = Xor_decryption(xor)
+client = Client(xor_decrypt)
+print(client.print_recieved_text())
